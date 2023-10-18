@@ -1,0 +1,19 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm install -g create-vite
+        - create-vite viteapp # replace "my-vite-app" with your project name
+        - cd viteapp # change to your project directory
+    build:
+      commands:
+        - npm install
+        - npm run build
+  artifacts:
+    baseDirectory: viteapp/dist # adjust the directory where your Vite project's build artifacts are located
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - viteapp/node_modules/**/*
